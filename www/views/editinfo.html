@@ -1,0 +1,46 @@
+﻿<div id="header">
+    <div class="gohome radius20"><a href="javascript:void(0)" ng-click="goBack()"><i class="fa fa-arrow-left"></i></a></div>
+    <div class="gotitle">Edit Info</div>
+</div>
+<div class="page-content">
+    <div class="form">
+        <form name="form" ng-if="userInfo" ng-submit="updateUser()">
+            <label>First Name</label>
+            <input type="text" name="fname" id="fname" class="form_input" placeholder="This field is required" ng-model="userInfo.FirstName" required />
+            <div ng-show="form.fname.$dirty && form.fname.$invalid">
+                Invalid:
+                <span ng-show="form.fname.$error.required">This field is required</span>
+            </div>
+            <label>Last Name</label>
+            <input type="text" name="lname" id="lname" class="form_input" ng-model="userInfo.LastName" />
+            <label>Email</label>
+            <input type="email" name="email" id="email" class="form_input" placeholder="This field is required" ng-model="userInfo.Email" required />
+            <div ng-show="form.email.$dirty && form.email.$invalid">
+                Invalid:
+                <span ng-show="form.email.$error.required">Tell us your email.</span>
+                <span ng-show="form.email.$error.email">This is not a valid email.</span>
+            </div>
+            <label>Mobile</label>
+            <input type="number" name="mobile" id="mobile" class="form_input" ng-model="userInfo.Mobile" />
+            <div ng-show="form.mobile.$dirty && form.mobile.$invalid">
+                Invalid:
+                <span ng-show="form.mobile.$error.number">This is not a valid number.</span>
+            </div>
+            <label>Date of Birth</label>
+            <input type="date" name="dob" id="dob" class="form_input" ng-model="userInfo.DOB" />
+            <label>Anniversary</label>
+            <input type="date" name="anniversary" id="anniversary" class="form_input" ng-model="userInfo.Anniversary" />
+            <label>Address Line 1</label>
+            <input type="text" name="address1" id="address1" class="form_input" ng-model="userInfo.AddressLine1" />
+            <label>Address Line 2</label>
+            <input type="text" name="address2" id="address2" class="form_input" ng-model="userInfo.AddressLine2" />
+            <label>City</label>
+            <input type="text" name="city" id="city" class="form_input" ng-model="userInfo.City" />
+            <label>State</label>
+            <input type="text" name="state" id="state" class="form_input" ng-model="userInfo.State" />
+            <label>Country</label>
+            <input type="text" name="country" id="country" class="form_input" ng-model="userInfo.Country" />
+            <input type="submit" class="button_11 blue form_submit" ng-disabled="form.$invalid" value="Update" />
+        </form>
+    </div>
+</div>
