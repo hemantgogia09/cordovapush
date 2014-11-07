@@ -1,0 +1,54 @@
+<div class="container">
+    <div id="header">
+        <div class="gohome radius20"><a href="#home"><img src="img/icons_contour/home.png" alt="" title="" /></a></div>
+        <div class="gotitle">Offers</div>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" ng-repeat="offer in offers">
+                <div class="image_single">
+                    <img ng-src="{{offer.ImageURL}}" alt="" title="" border="0">
+                </div>
+                <div class="offer-details">
+                    <h2 class="title">{{offer.Title}}</h2>
+                    <hr />
+                    <h4 class="details" ng-if="offer.Content"><span ng-bind-html="offer.Content"></span></h4>
+                    <h5 class="sub-details" ng-if="offer.Template">{{offer.Template}}</h5>
+                    <div class="fb-buttons" ng-repeat="offertype in offer.OfferRuleTypes" style="margin-bottom:10px;" ng-if="!offer.OfferClaimed">
+                        <div ng-if="offertype.OfferType == 1">
+                            <div>Like this offer to unlock special offer.</div>
+                            <!--<div class="fb-like" data-href="{{offertype.URLToPost}}" data-layout="standard" data-action="like" data-width="300" data-share="false"></div>-->
+                            <a href="javascript:void(0)" class="button facebook-color" ng-click="openDialog('like',offer)">Like Us</a>
+                        </div>
+                        <div ng-if="offertype.OfferType == 2">
+                            <h5>Share this offer to unlock special offer.</h5>
+                            <a href="javascript:void(0)" class="button facebook-color" ng-click="openDialog('feed',offer)">Share this on Facebook</a>
+                        </div>
+                        <!--<div ng-if="offertype.OfferType == 4">
+                            <h5>Send this offer to unlock special offer.</h5>
+                            <a href="javascript:void(0)" class="button facebook-color" ng-click="openDialog('send',offer)">Send this to Friend</a>
+                        </div>-->
+                    </div>
+                    <div ng-if="offer.OfferClaimed">
+                        <h5>{{offer.OfferCodeToShow}}</h5>
+                    </div>
+                    <div ng-show="offer.OfferRunEndDate" class="count-down">
+                        <div id="cout-down-{{offer.OfferMasterID}}"></div>
+                        <div class="hour-bottom"><span style="left: 3px;">Days</span><span style="left: 22px;">Hours</span><span style="left: 40px;">Mins</span><span style="left: 57px;">Sec</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination"></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/libs/jquery.countdownTimer.min.js"></script>
+<!--<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&appId=262883023839450&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>-->

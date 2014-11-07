@@ -1,0 +1,31 @@
+<div class="container">
+    <div id="header">
+        <div class="gohome radius20"><a href="#home"><img src="img/icons_contour/home.png" alt="" title="" /></a></div>
+        <div class="gotitle">Select Location</div>
+        <div class="gomenu radius20"><a href="javascript:void(0)" ng-click="findCurrentLoc()"><i class="fa fa-map-marker"></i></a></div>
+    </div>
+    <div class="page-area" kendo-mobile-scroller>
+        <ul id="loclist" kendo-mobile-list-view k-data-source="locations" k-template="locationTemplate" k-click="locationClick" k-data-bound="locationBound()"></ul>
+    </div>
+    <div id="footer">
+        <div class="footer-left"><a class="button red" href="javascript:void(0)" ng-click="showMap()"><i class="fa fa-location-arrow"></i> Show Map</a></div>
+        <div class="footer-right"><a class="button orange" href="javascript:void(0)" ng-click="setCurrentLocation()">Select Location</a></div>
+    </div>
+    <script id="locationTemplate" type="text/x-kendo-template">
+        <div id='${VendorLocationID}' class='loc-container'>
+            <div class='loc-title'>${LocationName}</div>
+            #if(AddressLine1 != null){#
+            <div class='loc-address'><span>${AddressLine1}</span></div>
+            #}#
+            #if(AddressLine2 != null){#
+            <div class='loc-address'><span>${AddressLine2}</span></div>
+            #}#
+            <div class='loc-city'><span>${City}</span></div>
+            <div class='loc-state'><span>${State},${Country}</span></div>
+            <div class='loc-thumb'><img src=${Thumbnail} onerror="this.src = 'img/not-available.png'" alt="location-thumb" title="" /></div>
+            #if(distance != 'no'){#
+            <div class='loc-distance'><i class="fa fa-location-arrow"></i> ${distance.toFixed(2)} km</div>
+            #}#
+        </div>
+    </script>
+</div>
